@@ -6,9 +6,9 @@ Tabularlib is distributed in the hope that it will be useful, but WITHOUT ANY WA
 
 You should have received a copy of the GNU General Public License along with Tabularlib. If not, see <https://www.gnu.org/licenses/>. */
 
-mod interp;
-mod memo;
-mod utils;
+pub mod interp;
+pub mod memo;
+pub mod utils;
 
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
