@@ -1,9 +1,12 @@
 [package]
 name = "tabularlib"
 version = "0.1.0"
+rust-version = "1.80.0"
 authors = ["hirundula <hirundula@gmail.com>"]
 edition = "2021"
 license = "GPL-3"
+license-file = "/LICENSE.txt"
+homepage = "https://github.com/hirundula/tabularlibrs"
 repository = "https://github.com/hirundula/tabularlibrs"
 keywords = ["mathematics", "data-structures", "algebra", "matrix", "matrices"]
 categories = ["mathematics"]
