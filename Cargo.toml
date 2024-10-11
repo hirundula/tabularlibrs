@@ -1,7 +1,7 @@
 [package]
 name = "tabularlib"
 description = "Small library for abstract matrices stored in single linear vectors created as practice project"
-version = "0.1.0"
+version = "0.1.1"
 rust-version = "1.80.0"
 authors = ["hirundula <hirundula@gmail.com>"]
 edition = "2021"
