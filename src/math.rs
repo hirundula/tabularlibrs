@@ -41,14 +41,12 @@ impl Matr {
     pub fn prod(&self, factor: &Matr) {
         if self.i == factor.j {
             let mut res: Matr = Matr::def(factor.i, self.j);
-            for i in res.i {
-                let mut s:usize = 0;
-                for j in 0..self.data.len() {
-                    if j % self.j == 0 {
-                        for k in s..j-1 {
-                            //variable += self * factor
+            for i in (0.. res.data.len()).step_by(res.j) {
+                for j in i-1-res.j..i-1 {
+                    for k in (0..factor.data.len()).step_by(factor.j) {
+                        for l in 0..factor.i {
+                            //I'll think later
                         }
-                        s = j-1;
                     }
                 }
             }
