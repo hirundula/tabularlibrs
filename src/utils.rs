@@ -24,13 +24,13 @@ impl interp::Matr {
 
 /* Method to get value from a linearly indexed cell in the matrix. */
 /* Accepts the linear index of the desired cell. */
-    pub fn getval(&self, index: usize) -> i32 {
+    pub fn peek(&self, index: usize) -> i32 {
         self.data[index]
     }
 
 /* Method to get value from a quadratically indexed cell in the matrix. */
 /* Accepts coordinates of the desired cell. */
-    pub fn getmnval(&self, m: usize, n: usize) -> i32{
+    pub fn peekmn(&self, m: usize, n: usize) -> i32{
         let lin = self.getlin(m, n);
         self.getval(lin)
     }

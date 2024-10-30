@@ -7,6 +7,7 @@ Tabularlib is distributed in the hope that it will be useful, but WITHOUT ANY WA
 You should have received a copy of the GNU General Public License along with Tabularlib. If not, see <https://www.gnu.org/licenses/>. */
 
 use crate::interp;
+use crate::utils;
 use crate::interp::Matr;
 impl Matr {
     pub fn sum(&self, addend: &Matr) -> Matr {
@@ -18,7 +19,7 @@ impl Matr {
             return res;
         }
         else {
-            panic!("Matrices must be of equal order to be summed.")
+            panic!("Matrices must be of equal order to be summed!")
         }
     }
     pub fn tpos(&self) -> Matr {
@@ -41,12 +42,12 @@ impl Matr {
     pub fn prod(&self, factor: &Matr) {
         if self.i == factor.j {
             let mut res: Matr = Matr::def(factor.i, self.j);
-            for i in (0.. res.data.len()).step_by(res.j) {
-                for j in i-1-res.j..i-1 {
-                    for k in (0..factor.data.len()).step_by(factor.j) {
-                        for l in 0..factor.i {
-                            //I'll think later
-                        }
+            for targ in res.data.len() {
+                res.data[targ] = 0;
+                for An in self.j {
+                    for Bm in factor.i {
+                        let x = res.getmn(targ);
+                        res.fillmn(res.data[targ]+self.peekmn(x[0], An)*factor.peekmn(Bm, x[1]), x[0], x[1])
                     }
                 }
             }
