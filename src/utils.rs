@@ -11,28 +11,28 @@ impl interp::Matr {
 
 /* Method to fill a linearly indexed cell in the matrix. */
 /* Accepts the target value and the desired index. */
-    pub fn fill(&mut self, datau: &i32, index: &usize) {
+    pub fn fill(&mut self, datau: i32, index: usize) {
         self.data[index] = datau;
     }
 
 /* Method to fill a quadratically indexed cell in the matrix. */
 /* Accepts the target value and the coordinates for the desired cell. */
-    pub fn fillmn(&mut self, datau: &i32, m: &usize, n: &usize) {
+    pub fn fillmn(&mut self, datau: i32, m: usize, n: usize) {
         let lin = self.getlin(m, n);
-        self.fill(datau, &lin);
+        self.fill(datau, lin);
     }
 
 /* Method to get value from a linearly indexed cell in the matrix. */
 /* Accepts the linear index of the desired cell. */
-    pub fn peek(&self, index: &usize) -> i32 {
+    pub fn peek(&self, index: usize) -> i32 {
         self.data[index]
     }
 
 /* Method to get value from a quadratically indexed cell in the matrix. */
 /* Accepts coordinates of the desired cell. */
-    pub fn peekmn(&self, m: &usize, n: &usize) -> i32{
+    pub fn peekmn(&self, m: usize, n: usize) -> i32{
         let lin = self.getlin(m, n);
-        self.getval(lin)
+        self.peek(lin)
     }
 
 /* A lot of these are just for pure user-friendliness. You can not include them, if you don't want them, and use the Matr.data property and methods in interp.rs directly instead. :) */

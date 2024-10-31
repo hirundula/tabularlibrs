@@ -25,10 +25,11 @@ impl Matr {
     pub fn tpos(&self) -> Matr {
         let mut res: Matr = Matr::def(self.i, self.j);
         for i in 0..self.data.len() {
-            let targ = self.getmn(&i);
+            let targ = self.getmn(i);
             let tm = targ[1];
             let tn: usize = targ[0];
-            res.data[res.getlin(&tm, &tn)] = self.data[i];
+            let chk = res.getlin(tm, tn);
+            res.data[chk] = self.data[i];
         }
         res
     }
@@ -46,8 +47,8 @@ impl Matr {
                 res.data[targ] = 0;
                 for An in 0..self.j {
                     for Bm in 0..factor.i {
-                        let x = res.getmn(&targ);
-                        res.fillmn(&(res.data[targ]+self.peekmn(&x[0], &An)*factor.peekmn(&Bm, &x[1])), &x[0], &x[1])
+                        let x = res.getmn(targ);
+                        res.fillmn(res.data[targ]+self.peekmn(x[0], An)*factor.peekmn(Bm, x[1]), x[0], x[1])
                     }
                 }
             }
