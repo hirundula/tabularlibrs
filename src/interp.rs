@@ -30,7 +30,7 @@ impl Matr {
 
 /* Method to transform the linear vector indexation of a cell into its 2d m * n coordinates, where m are the rows, and n are the columns. */
 /* Accepts the target's linear index and returns a tuple with the 2d coordinates. */
-    pub fn getmn(&self, targ: usize) -> [usize; 2] {
+    pub fn getmn(&self, targ: &usize) -> [usize; 2] {
         let m = targ / self.i;
         let n = targ % self.j;
         [m, n]
@@ -38,7 +38,7 @@ impl Matr {
 
 /* Method to transform the 2d m * n coordinates of a cell into its linear indexation to make it machine-readable. */
 /* Accepts two values of the row and column the object is positioned in and returns the target's linear index. */
-    pub fn getlin(&self, m: usize, n: usize) -> usize {
+    pub fn getlin(&self, m: &usize, n: &usize) -> usize {
         self.i * m + n
     }
 

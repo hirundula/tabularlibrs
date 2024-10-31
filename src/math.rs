@@ -25,10 +25,10 @@ impl Matr {
     pub fn tpos(&self) -> Matr {
         let mut res: Matr = Matr::def(self.i, self.j);
         for i in 0..self.data.len() {
-            let targ = self.getmn(i);
+            let targ = self.getmn(&i);
             let tm = targ[1];
             let tn: usize = targ[0];
-            res.data[res.getlin(tm, tn)] = self.data[i];
+            res.data[res.getlin(&tm, &tn)] = self.data[i];
         }
         res
     }
@@ -39,18 +39,22 @@ impl Matr {
         }
         res
     }
-    pub fn prod(&self, factor: &Matr) {
+    pub fn prod(&self, factor: &Matr) -> Matr {
         if self.i == factor.j {
             let mut res: Matr = Matr::def(factor.i, self.j);
-            for targ in res.data.len() {
+            for targ in 0..res.data.len() {
                 res.data[targ] = 0;
-                for An in self.j {
-                    for Bm in factor.i {
-                        let x = res.getmn(targ);
-                        res.fillmn(res.data[targ]+self.peekmn(x[0], An)*factor.peekmn(Bm, x[1]), x[0], x[1])
+                for An in 0..self.j {
+                    for Bm in 0..factor.i {
+                        let x = res.getmn(&targ);
+                        res.fillmn(&(res.data[targ]+self.peekmn(&x[0], &An)*factor.peekmn(&Bm, &x[1])), &x[0], &x[1])
                     }
                 }
             }
+            return res;
+        }
+        else {
+            panic!("Matrices A and B must have equal numbers of columns and rows respectively to be multiplied!")
         }
     }
 }
