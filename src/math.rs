@@ -23,12 +23,10 @@ impl Matr {
         }
     }
     pub fn tpos(&self) -> Matr {
-        let mut res: Matr = Matr::def(self.i, self.j);
+        let mut res: Matr = Matr::def(self.j, self.i);
         for i in 0..self.data.len() {
             let targ = self.getmn(i);
-            let tm = targ[1];
-            let tn: usize = targ[0];
-            let chk = res.getlin(tm, tn);
+            let chk = res.getlin(targ[1], targ[0]);
             res.data[chk] = self.data[i];
         }
         res
