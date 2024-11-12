@@ -8,7 +8,6 @@ You should have received a copy of the GNU General Public License along with Tab
 
 pub mod interp;
 pub mod memo;
-pub mod utils;
 pub mod math;
 
 pub fn add(left: u64, right: u64) -> u64 {
