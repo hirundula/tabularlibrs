@@ -13,7 +13,7 @@ impl Matr {
         assert_eq!(self.data.len(), addend.data.len());
         let mut res: Matr = Matr::def(self.i, self.j);
         for i in 0..res.data.len() {
-            res.data[i] = self.data[i] + addend.data[i];
+            res.set(self.peek(i) + addend.peek(i), i);
         }
         return res;
     }
@@ -29,7 +29,7 @@ impl Matr {
     pub fn kprod(&self, k: &i32) -> Matr {
         let mut res: Matr = Matr::def(self.i, self.j);
         for i in 0..res.data.len() {
-            res.data[i] = self.data[i]*k;
+            res.set(self.peek(i)*k, i);
         }
         res
     }
